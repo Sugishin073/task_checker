@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Header } from "../../components/header";
-import { Select } from "../../components/select";
-import { ToDoList } from "../../components/toDoList";
-import { FormModal } from "../../components/modal";
+import { Task } from "../task";
+import { FormModal } from "../modal";
+import MenuIcon from "@material-ui/icons/Menu";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import "./style.css";
 
-export const Home = () => {
+export const ToDoList = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleOpen = () => {
     setIsOpen(true);
@@ -14,25 +13,27 @@ export const Home = () => {
   const handleClose = () => {
     setIsOpen(false);
   };
-
   return (
-    <div className="main">
-      <Header />
-        <div className="genre">
-        <Select />
+    <div className="task_list">
+      <div className="section">
+        <MenuIcon className="section_ele" />
+        <span className="section_ele">ToDo</span>
         <AddCircleOutlineIcon
           className="add_circle_outline_icon"
-          fontSize="medium"
+          fontSize="small"
           onClick={handleOpen}
         />
         <FormModal
           handleClose={handleClose}
           isOpen={isOpen}
-          body="genreBody"
+          body="taskBody"
         />
       </div>
-      <div className="contents">
-        <ToDoList />
+      <div className="task_field">
+        <Task />
+        <Task />
+        <Task />
+        <Task />
       </div>
     </div>
   );
